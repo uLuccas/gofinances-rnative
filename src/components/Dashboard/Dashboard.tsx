@@ -1,4 +1,5 @@
 import React from 'react';
+import {HighlightComponent} from '../HighlightCard';
 import {
   Container,
   Header,
@@ -32,6 +33,8 @@ function Dashboard() {
           {/* <Icon name="power-off" size={30} color={'#f87e0c'} /> */}
         </UserWrapper>
       </Header>
+
+      <HighlightComponent />
     </Container>
   );
 }
