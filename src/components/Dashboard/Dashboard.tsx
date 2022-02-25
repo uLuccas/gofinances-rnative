@@ -10,6 +10,7 @@ import {
   Usergreeting,
   UserName,
   Icon,
+  HighlightCards,
 } from './styles';
 
 function Dashboard() {
@@ -30,11 +31,15 @@ function Dashboard() {
             </User>
           </UserInfo>
           <Icon name="power-off" />
-          {/* <Icon name="power-off" size={30} color={'#f87e0c'} /> */}
         </UserWrapper>
       </Header>
 
-      <HighlightComponent />
+      <HighlightCards>
+        <HighlightComponent />
+        <HighlightComponent />
+        <HighlightComponent />
+        <HighlightComponent />
+      </HighlightCards>
     </Container>
   );
 }

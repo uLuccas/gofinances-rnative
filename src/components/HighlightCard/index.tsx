@@ -15,7 +15,7 @@ export function HighlightComponent() {
     <Container>
       <Header>
         <Title>Entrada</Title>
-        <Icon name="arrow-up-circle" />
+        <Icon name="arrowup" />
       </Header>
 
       <Footer>
