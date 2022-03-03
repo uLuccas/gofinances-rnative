@@ -1,46 +1,74 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
+import Icons from 'react-native-vector-icons/Feather';
 import {RFValue} from 'react-native-responsive-fontsize';
-import IconPower from 'react-native-vector-icons/AntDesign';
 
-export const Container = styled.View`
-  background-color: ${({theme}) => theme.colors.shape};
+interface Types {
+  type: 'up' | 'down' | 'total';
+}
+
+export const Container = styled.View<Types>`
   width: ${RFValue(300)}px;
-  margin-right: 20px;
+  height: ${RFValue(200)}px;
+  border: solid 1px black;
   border-radius: 5px;
-  border: solid 1px ${({theme}) => theme.colors.primary};
+  margin: ${RFValue(20)}px;
   padding: 19px 23px;
-  padding-bottom: ${RFValue(42)};
-  height: ${RFValue(120)}px;
+  padding-bottom: ${RFValue(42)}px;
+
+  background-color: ${({theme, type}) =>
+    type === 'total' ? theme.colors.secondary : theme.colors.background};
 `;
 
 export const Header = styled.View`
-  flex-direction: row;
   justify-content: space-between;
-  padding: 2px 10px;
-  margin-bottom: 10px;
+  flex-direction: row;
 `;
 
-export const Title = styled.Text`
-  font-size: ${RFValue(18)}px;
+export const Title = styled.Text<Types>`
+  font-family: ${({theme}) => theme.fonts.regular};
+  font-size: ${RFValue(14)}px;
+
+  color: ${({theme, type}) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
 `;
 
-export const Icon = styled(IconPower)`
-  font-size: ${RFValue(18)}px;
-  color: ${({theme}) => theme.colors.success};
+export const IconsCard = styled(Icons)<Types>`
+  font-size: ${RFValue(40)}px;
+
+  ${({type}) =>
+    type === 'up' &&
+    css`
+      color: ${({theme}) => theme.colors.success};
+    `};
+
+  ${({type}) =>
+    type === 'down' &&
+    css`
+      color: ${({theme}) => theme.colors.attention};
+    `};
+
+  ${({type}) =>
+    type === 'total' &&
+    css`
+      color: ${({theme}) => theme.colors.shape};
+    `};
 `;
 
-export const Footer = styled.View`
-  padding: 0px 10px;
-  color: ${({theme}) => theme.colors.background};
-`;
+export const Footer = styled.View``;
 
-export const Amount = styled.Text`
-  font-size: ${RFValue(18)}px;
+export const Amount = styled.Text<Types>`
   font-family: ${({theme}) => theme.fonts.medium};
-  margin-bottom: 10px;
+  font-size: ${RFValue(32)}px;
+
+  margin-top: 38px;
+
+  color: ${({theme, type}) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
 `;
 
-export const LastTransaction = styled.Text`
-  color: ${({theme}) => theme.colors.text};
-  font-size: ${RFValue(10)}px;
+export const LastTransaction = styled.Text<Types>`
+  font-family: ${({theme}) => theme.fonts.regular};
+  font-size: ${RFValue(12)}px;
+  color: ${({theme, type}) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text};
 `;
